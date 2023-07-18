@@ -4,7 +4,7 @@ using api_alura_challenge.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-
+using System.Linq;
 
 namespace api_alura_challenge.Controllers;
 
@@ -14,6 +14,7 @@ public class DepoimentosController : ControllerBase
 {
     private DepoimentoContext _context;
     private IMapper _mapper;
+    private static readonly Random random = new Random();
 
     public DepoimentosController(DepoimentoContext context, IMapper mapper)
     {
@@ -48,7 +49,8 @@ public class DepoimentosController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IEnumerable<ReadDepoimentoDto> BuscaDepoimentos([FromQuery] int skip = 0, [FromQuery] int take = 50)
     {
-        return _mapper.Map<List<ReadDepoimentoDto>>(_context.Depoimentos.Skip(skip).Take(take));
+        List<ReadDepoimentoDto> depoimentos = _mapper.Map<List<ReadDepoimentoDto>>(_context.Depoimentos.OrderBy(depoimentos => depoimentos.Id).Skip(skip).Take(take));
+        return depoimentos;
     }
 
     /// <summary>
@@ -83,6 +85,23 @@ public class DepoimentosController : ControllerBase
         _mapper.Map(depoimentoDto, depoimento);
         _context.SaveChanges();
         return NoContent();
+    }
+
+    /// <summary>
+    /// Lista de forma aleatória os depoimentos da página Home
+    /// </summary>
+    /// <param name="take">Quantidade de depoimentos a serem listados</param>
+    /// <returns></returns>
+    /// <response code="200">Caso os depoimentos sejam listados com sucesso</response>
+    [HttpGet]
+    [Route("home")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public IActionResult BuscaDepoimentoHome([FromQuery] int take = 3)
+    {
+        List<ReadDepoimentoDto> depoimentos = _mapper.Map<List<ReadDepoimentoDto>>(_context.Depoimentos.OrderBy(depoimentos => depoimentos.Id).ToList());
+        if (depoimentos == null) return NoContent();
+        List<ReadDepoimentoDto> depoimentosAleatorios = depoimentos.OrderBy(x => random.Next()).Take(take).ToList();
+        return Ok(depoimentosAleatorios);
     }
 
     /// <summary>
@@ -124,4 +143,5 @@ public class DepoimentosController : ControllerBase
         _context.SaveChanges();
         return NoContent();
     }
+
 }
