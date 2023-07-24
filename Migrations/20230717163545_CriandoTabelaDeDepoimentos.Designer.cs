@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using api_alura_challenge.Data;
+using api_alura_challenge.Data.Contexts;
 
 #nullable disable
 
 namespace api_alura_challenge.Migrations
 {
-    [DbContext(typeof(DepoimentoContext))]
+    [DbContext(typeof(ApplicationContext))]
     [Migration("20230717163545_CriandoTabelaDeDepoimentos")]
     partial class CriandoTabelaDeDepoimentos
     {

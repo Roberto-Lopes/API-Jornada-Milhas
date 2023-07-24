@@ -1,4 +1,4 @@
-using api_alura_challenge.Data;
+using api_alura_challenge.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -10,12 +10,10 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        var connectionString = builder.Configuration.GetConnectionString("DepoimentoConnection");
-
-        // Add services to the container.
+        var connectionString = builder.Configuration.GetConnectionString("ChallengeConnection");
 
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-        builder.Services.AddDbContext<DepoimentoContext>(opts =>
+        builder.Services.AddDbContext<ApplicationContext>(opts =>
             opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>

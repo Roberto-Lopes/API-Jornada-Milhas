@@ -1,4 +1,4 @@
-﻿using api_alura_challenge.Data;
+﻿using api_alura_challenge.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
 
@@ -15,9 +15,9 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        var connectionString = Configuration.GetConnectionString("DepoimentoConnection");
+        var connectionString = Configuration.GetConnectionString("ChallengeConnection");
 
-        services.AddDbContext<DepoimentoContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+        services.AddDbContext<ApplicationContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
         services.AddCors(options =>
         {

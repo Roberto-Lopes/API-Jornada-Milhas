@@ -1,4 +1,4 @@
-﻿using api_alura_challenge.Data.Dtos;
+﻿using api_alura_challenge.Data.Dtos.DepoimentosDtos;
 using api_alura_challenge.Models;
 using AutoMapper;
 

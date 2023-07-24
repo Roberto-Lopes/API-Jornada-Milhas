@@ -1,5 +1,5 @@
-﻿using api_alura_challenge.Data;
-using api_alura_challenge.Data.Dtos;
+﻿using api_alura_challenge.Data.Contexts;
+using api_alura_challenge.Data.Dtos.DepoimentosDtos;
 using api_alura_challenge.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
@@ -12,11 +12,11 @@ namespace api_alura_challenge.Controllers;
 [Route("[controller]")]
 public class DepoimentosController : ControllerBase
 {
-    private DepoimentoContext _context;
+    private ApplicationContext _context;
     private IMapper _mapper;
     private static readonly Random random = new Random();
 
-    public DepoimentosController(DepoimentoContext context, IMapper mapper)
+    public DepoimentosController(ApplicationContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;
