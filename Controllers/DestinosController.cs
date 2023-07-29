@@ -1,5 +1,6 @@
 ﻿using api_alura_challenge.Data.Contexts;
 using api_alura_challenge.Data.Dtos.DestinosDtos;
+using api_alura_challenge.Data.Dtos.ResultsDtos;
 using api_alura_challenge.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
@@ -38,16 +39,26 @@ public class DestinosController : ControllerBase
     /// <summary>
     /// Lista todos os destinos cadastrados no banco de dados
     /// </summary>
+    /// <param name="nome">Nome do destino a ser pesquisado</param>
     /// <param name="skip">Quantidade de elementos para pular</param>
     /// <param name="take">Quantidade de elementos na página</param>
     /// <returns></returns>
     /// <response code="200">Caso a pesquisa seja realizada com sucesso</response>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IEnumerable<ReadDestinoDto> BuscaDestinos([FromQuery] int skip = 0, int take = 50)
+    public IActionResult BuscaDestinos([FromQuery] string? nome = null, int skip = 0, int take = 50)
     {
-        List<ReadDestinoDto> destinos = _mapper.Map<List<ReadDestinoDto>>(_context.Destinos.OrderBy(destinos => destinos.Id).Skip(skip).Take(take));
-        return destinos;
+        if (string.IsNullOrEmpty(nome))
+        {
+            List<ReadDestinoDto> destinosDto = _mapper.Map<List<ReadDestinoDto>>(_context.Destinos.OrderBy(destinos => destinos.Id).Skip(skip).Take(take));
+            return Ok(destinosDto);
+        }
+        else
+        {
+            List<ReadDestinoDto> destinosDto = _mapper.Map<List<ReadDestinoDto>>(_context.Destinos.Where(destinosDto => destinosDto.nome.Contains(nome)).OrderBy(destinosDto => destinosDto.Id).Skip(skip).Take(take));
+            if (destinosDto.Any()) return Ok(destinosDto); ;
+            return NotFound(new NoContentResultDto());
+        }
     }
 
     /// <summary>
@@ -58,10 +69,10 @@ public class DestinosController : ControllerBase
     /// <response code="200">Caso a pesquisa seja realizada com sucesso</response>
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult BuscaDestinoPorId([FromQuery] int id)
+    public IActionResult BuscaDestinoPorId(int id)
     {
         var destino = _context.Destinos.FirstOrDefault(destino => destino.Id == id);
-        if (destino == null) return NotFound();
+        if (destino == null) return NotFound(new NoContentResultDto());
         var destinoDto = _mapper.Map<ReadDestinoDto>(destino);
         return Ok(destinoDto);
     }
@@ -78,7 +89,7 @@ public class DestinosController : ControllerBase
     public IActionResult AtualizaDestinoPorId(int id, UpdateDestinoDto destinoDto)
     {
         var destino = _context.Destinos.FirstOrDefault(destino => destino.Id == id);
-        if (destino == null) return NotFound();
+        if (destino == null) return NotFound(new NoContentResultDto());
         _mapper.Map(destinoDto, destino);
         _context.SaveChanges();
         return NoContent();
@@ -96,7 +107,7 @@ public class DestinosController : ControllerBase
     public IActionResult AtualizaDestinoParcial(int id, JsonPatchDocument<UpdateDestinoDto> patch)
     {
         var destino = _context.Destinos.FirstOrDefault(destino => destino.Id == id);
-        if (destino == null) return NotFound();
+        if (destino == null) return NotFound(new NoContentResultDto());
         var destinoParaAtualizar = _mapper.Map<UpdateDestinoDto>(destino);
         patch.ApplyTo(destinoParaAtualizar, ModelState);
 
@@ -118,7 +129,7 @@ public class DestinosController : ControllerBase
     public IActionResult DeletaDestinoPorId(int id)
     {
         var destino = _context.Destinos.FirstOrDefault(destino => destino.Id == id);
-        if (destino == null) return NotFound();
+        if (destino == null) return NotFound(new NoContentResultDto());
         _context.Remove(destino);
         _context.SaveChanges();
         return NoContent();

@@ -1,0 +1,25 @@
+Casos de teste:
+ -Post: 1) Ao adicionar um destino com sucesso a api deve retornar código 201; DONE
+	2) Ao adicionar um destino sem o campo "nome" a api deve retornar código 400; DONE
+	3) Ao Adicionar um destino com o campo "preço" vazio a api deve retornar código 400; DONE
+	4) Ao adicionar um destino com o campo "nome" com menos de 5 caracteres a api deve retornar código 400 com a seguinte mensagem "O nome do destino deve possuir no mínimo 5 caracteres"; DONE
+	5) Ao Adicionar um destino com o campo "nome" com mais de 255 caracteres a api deve retornar código 400 com a seguinte mensagem "O nome do destino deve possuir no máximo 255 caracteres". DONE
+	
+
+ -Get:  1) Ao buscar todos os destinos sem uso de filtros a api deve retornar código 200 e uma lista de destinos; DONE
+	2) Ao buscar destinos com um nome solicitado a api deve retornar código 200 e uma lista de destinos que contenham esse nome; DONE
+	3) Ao buscar destinos com um nome específico a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado" caso caso nenhum destino seja encontrado; DONE
+
+-Get("{id}"):   1) Ao buscar um destino por id a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado" caso nenhum destino seja encontrado com o id informado; DONE
+		2) Ao buscar um destino por id a api deve retornar código 200 e um JSON com as informações daquele destino caso um destino seja encontrado com o id informado; DONE
+
+-Put("{id}"): 1) Ao tentar atualizar um destino informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; DONE
+	      2) Ao tentar atualizar um destino informando um id que possúi cadastro o sistema deve retornar código 204; DONE
+
+-Patch("{id}"): 1) Ao tentar atualizar parcialmente um destino informando um id que possúi cadastro o sistema deve retornar código 204; DONE
+		2) Ao tentar atualizar parcialmente um destino informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; DONE
+		3) Ao tentar atualizar parcialmente um destino informando um campo que não existe a api deve retornar código 400; DONE
+		
+
+-Delete("{id}"): 1) Ao tentar deletar um destino informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; DONE
+		 2) Ao tentar deletar um destino informando um id que possúi cadastro a api deve retornar código 204; DONE

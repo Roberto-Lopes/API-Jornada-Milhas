@@ -9,7 +9,7 @@ using api_alura_challenge.Data.Contexts;
 namespace api_alura_challenge.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class DepoimentoContextModelSnapshot : ModelSnapshot
+    partial class ApplicationContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

@@ -1,5 +1,6 @@
 ﻿using api_alura_challenge.Data.Contexts;
 using api_alura_challenge.Data.Dtos.DepoimentosDtos;
+using api_alura_challenge.Data.Dtos.ResultsDtos;
 using api_alura_challenge.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
@@ -64,7 +65,7 @@ public class DepoimentosController : ControllerBase
     public IActionResult BuscaDepoimentoPorId(int id)
     {
         var depoimento = _context.Depoimentos.FirstOrDefault(depoimento => depoimento.Id == id);
-        if (depoimento == null) return NotFound();
+        if (depoimento == null) return NotFound(new NoContentResultDto());
         var depoimentoDto = _mapper.Map<ReadDepoimentoDto>(depoimento);
         return Ok(depoimentoDto);
     }

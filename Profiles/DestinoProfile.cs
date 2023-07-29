@@ -11,5 +11,7 @@ public class DestinoProfile : Profile
         CreateMap<CreateDestinoDto, Destino>();
         CreateMap<Destino, ReadDestinoDto>();
         CreateMap<ReadDestinoDto, Destino>();
+        CreateMap<UpdateDestinoDto, Destino>();
+        CreateMap<Destino, UpdateDestinoDto>();
     }
 }

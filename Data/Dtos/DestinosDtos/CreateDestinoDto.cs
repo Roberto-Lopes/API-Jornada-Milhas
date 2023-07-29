@@ -5,7 +5,7 @@ namespace api_alura_challenge.Data.Dtos.DestinosDtos;
 public class CreateDestinoDto
 {
     [Required(ErrorMessage = "O nome do destino é obrigatório")]
-    [MinLength(10, ErrorMessage = "O nome do destino deve possuir no mínimo 10 caracteres")]
+    [MinLength(5, ErrorMessage = "O nome do destino deve possuir no mínimo 5 caracteres")]
     [MaxLength(255, ErrorMessage = "O nome do destino deve possuir no máximo 255 caracteres")]
     public string Nome { get; set; }
 
