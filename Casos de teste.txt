@@ -1,4 +1,4 @@
-Casos de teste:
+Casos de teste endpoint Destinos:
  -Post: 1) Ao adicionar um destino com sucesso a api deve retornar código 201; DONE
 	2) Ao adicionar um destino sem o campo "nome" a api deve retornar código 400; DONE
 	3) Ao Adicionar um destino com o campo "preço" vazio a api deve retornar código 400; DONE
