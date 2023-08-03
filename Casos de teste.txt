@@ -1,9 +1,12 @@
 Casos de teste endpoint Destinos:
  -Post: 1) Ao adicionar um destino com sucesso a api deve retornar código 201; DONE
-	2) Ao adicionar um destino sem o campo "nome" a api deve retornar código 400; DONE
-	3) Ao Adicionar um destino com o campo "preço" vazio a api deve retornar código 400; DONE
-	4) Ao adicionar um destino com o campo "nome" com menos de 5 caracteres a api deve retornar código 400 com a seguinte mensagem "O nome do destino deve possuir no mínimo 5 caracteres"; DONE
-	5) Ao Adicionar um destino com o campo "nome" com mais de 255 caracteres a api deve retornar código 400 com a seguinte mensagem "O nome do destino deve possuir no máximo 255 caracteres". DONE
+	2) Ao adicionar um destino sem o campo "nome" a api deve retornar código 400 com a seguinte mensagem "O nome do destino é obrigatório"; DONE
+	3) Ao Adicionar um destino com o campo "foto_1" vazio a api deve retornar código 400 com a seguinte mensagem "São necessárias 2 fotos para o destino"; DONE
+	4) Ao Adicionar um destino com o campo "foto_2" vazio a api deve retornar código 400 com a seguinte mensagem "São necessárias 2 fotos para o destino"; DONE
+	5) Ao Adicionar um destino com o campo "meta" vazio a api deve retornar código 400 com a seguinte mensagem "O destino deve possuir uma meta"; DONE
+	6) Ao adicionar um destino com o campo "nome" com menos de 5 caracteres a api deve retornar código 400 com a seguinte mensagem "O nome do destino deve possuir no mínimo 5 caracteres"; DONE
+	7) Ao Adicionar um destino com o campo "nome" com mais de 255 caracteres a api deve retornar código 400 com a seguinte mensagem "O nome do destino deve possuir no máximo 255 caracteres". DONE
+	8) Ao Adicionar um destino com o campo "meta" com mais de 160 caracteres a api deve retornar código 400 com a seguinte mensagem "A meta deve possuir no máximo 160 caracteres". DONE
 	
 
  -Get:  1) Ao buscar todos os destinos sem uso de filtros a api deve retornar código 200 e uma lista de destinos; DONE
@@ -20,6 +23,5 @@ Casos de teste endpoint Destinos:
 		2) Ao tentar atualizar parcialmente um destino informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; DONE
 		3) Ao tentar atualizar parcialmente um destino informando um campo que não existe a api deve retornar código 400; DONE
 		
-
 -Delete("{id}"): 1) Ao tentar deletar um destino informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; DONE
 		 2) Ao tentar deletar um destino informando um id que possúi cadastro a api deve retornar código 204; DONE
