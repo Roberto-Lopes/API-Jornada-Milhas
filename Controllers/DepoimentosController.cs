@@ -48,10 +48,20 @@ public class DepoimentosController : ControllerBase
     /// <response code="200">Caso a pesquisa seja realizada com sucesso</response>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IEnumerable<ReadDepoimentoDto> BuscaDepoimentos([FromQuery] int skip = 0, [FromQuery] int take = 50)
+    public IActionResult BuscaDepoimentos([FromQuery] string? nome, int skip = 0, [FromQuery] int take = 50)
     {
-        List<ReadDepoimentoDto> depoimentos = _mapper.Map<List<ReadDepoimentoDto>>(_context.Depoimentos.OrderBy(depoimentos => depoimentos.Id).Skip(skip).Take(take));
-        return depoimentos;
+        if (string.IsNullOrEmpty(nome))
+        {
+            List<ReadDepoimentoDto> depoimentosDto = _mapper.Map<List<ReadDepoimentoDto>>(_context.Depoimentos.OrderBy(depoimentos => depoimentos.Id).Skip(skip).Take(take));
+            if (depoimentosDto.Any()) { return Ok(depoimentosDto); }
+            else return NotFound(new NoContentResultDto());
+        }
+        else
+        {
+            List<ReadDepoimentoDto> depoimentosDto = _mapper.Map<List<ReadDepoimentoDto>>(_context.Depoimentos.Where(depoimentos => depoimentos.nome.Contains(nome)).OrderBy(depoimentosDto => depoimentosDto.Id).Skip(skip).Take(take));
+            if (depoimentosDto.Any()) { return Ok(depoimentosDto); }
+            else return NotFound(new NoContentResultDto());
+        }
     }
 
     /// <summary>
@@ -82,7 +92,7 @@ public class DepoimentosController : ControllerBase
     public IActionResult AtualizaDepoimentoPorId(int id, UpdateDepoimentoDto depoimentoDto)
     {
         var depoimento = _context.Depoimentos.FirstOrDefault(depoimento => depoimento.Id == id);
-        if (depoimento == null) return NotFound();
+        if (depoimento == null) return NotFound(new NoContentResultDto());
         _mapper.Map(depoimentoDto, depoimento);
         _context.SaveChanges();
         return NoContent();
@@ -117,7 +127,7 @@ public class DepoimentosController : ControllerBase
     public IActionResult AtualizaDepoimentoParcial(int id, JsonPatchDocument<UpdateDepoimentoDto> patch)
     {
         var depoimento = _context.Depoimentos.FirstOrDefault(depoimento => depoimento.Id == id);
-        if (depoimento == null) return NotFound();
+        if (depoimento == null) return NotFound(new NoContentResultDto());
         var depoimentoParaAtualizar = _mapper.Map<UpdateDepoimentoDto>(depoimento);
         patch.ApplyTo(depoimentoParaAtualizar, ModelState);
 
@@ -139,7 +149,7 @@ public class DepoimentosController : ControllerBase
     public IActionResult DeletaDepoimento(int id)
     {
         var depoimento = _context.Depoimentos.FirstOrDefault(depoimento => depoimento.Id == id);
-        if (depoimento == null) return NotFound();
+        if (depoimento == null) return NotFound(new NoContentResultDto());
         _context.Remove(depoimento);
         _context.SaveChanges();
         return NoContent();

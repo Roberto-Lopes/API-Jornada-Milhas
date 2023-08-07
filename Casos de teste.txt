@@ -25,3 +25,28 @@ Casos de teste endpoint Destinos:
 		
 -Delete("{id}"): 1) Ao tentar deletar um destino informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; DONE
 		 2) Ao tentar deletar um destino informando um id que possúi cadastro a api deve retornar código 204; DONE
+
+Casos de teste endpoint Depoimentos:
+ -Post: 1) Ao adicionar um depoimento com sucesso a api deve retornar código 201; DONE
+	2) Ao adicionar um depoimento sem o campo "nome" a api deve retornar código 400 com a seguinte mensagem "O nome do criador do depoimento é obrigatório"; DONE
+	3) Ao adicionar um depoimento com o campo "nome" com menos de 10 caracteres a api deve retornar código 400 com a seguinte mensagem "O nome do criador deve possuir no mínimo 10 caracteres"; DONE
+	4) Ao Adicionar um depoimento com o campo "nome" com mais de 255 caracteres a api deve retornar código 400 com a seguinte mensagem "O nome do criador deve possuir no máximo 255 caracteres". DONE
+	5) Ao Adicionar um depoimento com o campo "depoimento" vazio a api deve retornar código 400 com a seguinte mensagem "O depoimento não pode estar em branco"; DONE
+	6) Ao adicionar um depoimento com o campo "depoimento" com menos de 10 caracteres a api deve retornar código 400 com a seguinte mensagem "O depoimento deve possuir no mínimo 10 caracteres"; DONE
+
+ -Get:  1) Ao buscar todos os depoimentos sem uso de filtros a api deve retornar código 200 e uma lista de destinos; DONE
+	2) Ao buscar depoimentos com um nome solicitado a api deve retornar código 200 e uma lista de destinos que contenham esse nome; DONE
+	3) Ao buscar depoimentos com um nome específico a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado" caso caso nenhum destino seja encontrado; DONE
+
+-Get("{id}"):   1) Ao buscar um depoimento por id a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado" caso nenhum destino seja encontrado com o id informado; DONE
+		2) Ao buscar um depoimento por id a api deve retornar código 200 e um JSON com as informações daquele destino caso um destino seja encontrado com o id informado; DONE
+
+-Put("{id}"): 1) Ao tentar atualizar um depoimento informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado";
+	      2) Ao tentar atualizar um depoimento informando um id que possúi cadastro o sistema deve retornar código 204; 
+
+-Patch("{id}"): 1) Ao tentar atualizar parcialmente um depoimento informando um id que possúi cadastro o sistema deve retornar código 204; 
+		2) Ao tentar atualizar parcialmente um depoimento informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; 
+		3) Ao tentar atualizar parcialmente um destino informando um campo que não existe a api deve retornar código 400; 
+		
+-Delete("{id}"): 1) Ao tentar deletar um depoimento informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; DONE
+		 2) Ao tentar deletar um depoimento informando um id que possúi cadastro a api deve retornar código 204; DONE

@@ -51,7 +51,8 @@ public class DestinosController : ControllerBase
         if (string.IsNullOrEmpty(nome))
         {
             List<ReadDestinoDto> destinosDto = _mapper.Map<List<ReadDestinoDto>>(_context.Destinos.OrderBy(destinos => destinos.Id).Skip(skip).Take(take));
-            return Ok(destinosDto);
+            if (destinosDto.Any()) return Ok(destinosDto); ;
+            return NotFound(new NoContentResultDto());
         }
         else
         {
