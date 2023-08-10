@@ -41,12 +41,12 @@ Casos de teste endpoint Depoimentos:
 -Get("{id}"):   1) Ao buscar um depoimento por id a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado" caso nenhum destino seja encontrado com o id informado; DONE
 		2) Ao buscar um depoimento por id a api deve retornar código 200 e um JSON com as informações daquele destino caso um destino seja encontrado com o id informado; DONE
 
--Put("{id}"): 1) Ao tentar atualizar um depoimento informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado";
-	      2) Ao tentar atualizar um depoimento informando um id que possúi cadastro o sistema deve retornar código 204; 
+-Put("{id}"): 1) Ao tentar atualizar um depoimento informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; DONE
+	      2) Ao tentar atualizar um depoimento informando um id que possúi cadastro o sistema deve retornar código 204 e um JSON validando que o Depoimento foi alterado; DONE
 
--Patch("{id}"): 1) Ao tentar atualizar parcialmente um depoimento informando um id que possúi cadastro o sistema deve retornar código 204; 
-		2) Ao tentar atualizar parcialmente um depoimento informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; 
-		3) Ao tentar atualizar parcialmente um destino informando um campo que não existe a api deve retornar código 400; 
+-Patch("{id}"): 1) Ao tentar atualizar parcialmente um depoimento informando um id que possúi cadastro o sistema deve retornar código 204; DONE
+		2) Ao tentar atualizar parcialmente um depoimento informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado";  DONE
+		3) Ao tentar atualizar parcialmente um destino informando um campo que não existe a api deve retornar código 400; DONE
 		
--Delete("{id}"): 1) Ao tentar deletar um depoimento informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado"; DONE
+-Delete("{id}"): 1) Ao tentar deletar um depoimento informando um id que não possúi cadastro a api deve retornar código 404 e a mensagem "Nenhum resultado foi encontrado";  DONE
 		 2) Ao tentar deletar um depoimento informando um id que possúi cadastro a api deve retornar código 204; DONE

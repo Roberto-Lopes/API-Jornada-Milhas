@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace api_alura_challenge.Models;
+namespace api_jornada_milhas.Models;
 
 public class Destino
 {

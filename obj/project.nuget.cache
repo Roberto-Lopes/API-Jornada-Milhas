@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rvDwgjvsedBaoQA5hG6XqjytLXzH0vBq7y1o8xWyy7vAq3e6RM0ru2d1r8tk168dnwWDCk3SaNecZUW5WxZ8Kg==",
+  "dgSpecHash": "ih2Swx5KhTCLVGnMyvYmAqeSHyH69mRSFosyO3RIRvp1Y7GB9F0A9nfRZZriDp8qc3DED8iNbEGNlpxqvwfe9Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rober\\Documentos\\Repositorios\\api-alura-challenge\\api-alura-challenge.csproj",
+  "projectFilePath": "C:\\Users\\rober\\Documentos\\Repositorios\\api-jornada-milhas\\api-jornada-milhas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rober\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\rober\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace api_alura_challenge.Data.Dtos.DestinosDtos;
+namespace api_jornada_milhas.Data.Dtos.DestinosDtos;
 
 public class CreateDestinoDto
 {

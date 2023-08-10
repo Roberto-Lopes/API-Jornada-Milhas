@@ -1,7 +1,7 @@
-﻿using api_alura_challenge.Models;
+﻿using api_jornada_milhas.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace api_alura_challenge.Data.Contexts
+namespace api_jornada_milhas.Data.Contexts
 {
     public class ApplicationContext : DbContext
     {

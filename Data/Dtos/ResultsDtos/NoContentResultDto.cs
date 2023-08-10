@@ -1,4 +1,4 @@
-﻿namespace api_alura_challenge.Data.Dtos.ResultsDtos
+﻿namespace api_jornada_milhas.Data.Dtos.ResultsDtos
 {
     public class NoContentResultDto
     {

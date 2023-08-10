@@ -1,16 +1,16 @@
-using api_alura_challenge.Data.Contexts;
+using api_jornada_milhas.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
-namespace api_alura_challenge;
+namespace api_jornada_milhas;
 
 public class Program
 {
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-        var connectionString = builder.Configuration.GetConnectionString("ChallengeConnection");
+        var connectionString = builder.Configuration.GetConnectionString("JornadaMilhasConnection");
 
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         builder.Services.AddDbContext<ApplicationContext>(opts =>
@@ -18,7 +18,7 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Alura Challenge", Version = "v1" });
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Jornada Milhas", Version = "v1" });
             var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             c.IncludeXmlComments(xmlPath);

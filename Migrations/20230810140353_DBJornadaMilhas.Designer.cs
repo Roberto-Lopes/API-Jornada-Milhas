@@ -3,15 +3,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using api_alura_challenge.Data.Contexts;
+using api_jornada_milhas.Data.Contexts;
 
 #nullable disable
 
-namespace api_alura_challenge.Migrations
+namespace api_jornada_milhas.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230724192228_CriandoTabelaDeDestinos")]
-    partial class CriandoTabelaDeDestinos
+    [Migration("20230810140353_DBJornadaMilhas")]
+    partial class DBJornadaMilhas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace api_alura_challenge.Migrations
                 .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("api_alura_challenge.Models.Depoimento", b =>
+            modelBuilder.Entity("api_jornada_milhas.Models.Depoimento", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -45,23 +45,32 @@ namespace api_alura_challenge.Migrations
                     b.ToTable("Depoimentos");
                 });
 
-            modelBuilder.Entity("api_alura_challenge.Models.Destino", b =>
+            modelBuilder.Entity("api_jornada_milhas.Models.Destino", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("foto")
+                    b.Property<string>("foto_1")
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("foto_2")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("meta")
+                        .IsRequired()
+                        .HasMaxLength(160)
+                        .HasColumnType("varchar(160)");
+
                     b.Property<string>("nome")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("longtext");
 
-                    b.Property<double>("preço")
-                        .HasColumnType("double");
+                    b.Property<string>("texto_descritivo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 

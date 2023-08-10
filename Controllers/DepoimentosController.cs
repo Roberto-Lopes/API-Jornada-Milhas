@@ -1,13 +1,13 @@
-﻿using api_alura_challenge.Data.Contexts;
-using api_alura_challenge.Data.Dtos.DepoimentosDtos;
-using api_alura_challenge.Data.Dtos.ResultsDtos;
-using api_alura_challenge.Models;
+﻿using api_jornada_milhas.Data.Contexts;
+using api_jornada_milhas.Data.Dtos.DepoimentosDtos;
+using api_jornada_milhas.Data.Dtos.ResultsDtos;
+using api_jornada_milhas.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
-namespace api_alura_challenge.Controllers;
+namespace api_jornada_milhas.Controllers;
 
 [ApiController]
 [Route("[controller]")]

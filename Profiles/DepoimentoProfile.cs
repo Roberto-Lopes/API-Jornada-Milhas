@@ -1,8 +1,8 @@
-﻿using api_alura_challenge.Data.Dtos.DepoimentosDtos;
-using api_alura_challenge.Models;
+﻿using api_jornada_milhas.Data.Dtos.DepoimentosDtos;
+using api_jornada_milhas.Models;
 using AutoMapper;
 
-namespace api_alura_challenge.Profiles;
+namespace api_jornada_milhas.Profiles;
 
 public class DepoimentoProfile :Profile
 {

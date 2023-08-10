@@ -2,11 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using api_alura_challenge.Data.Contexts;
+using api_jornada_milhas.Data.Contexts;
 
 #nullable disable
 
-namespace api_alura_challenge.Migrations
+namespace api_jornada_milhas.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
     partial class ApplicationContextModelSnapshot : ModelSnapshot
@@ -18,7 +18,7 @@ namespace api_alura_challenge.Migrations
                 .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("api_alura_challenge.Models.Depoimento", b =>
+            modelBuilder.Entity("api_jornada_milhas.Models.Depoimento", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace api_alura_challenge.Migrations
                     b.ToTable("Depoimentos");
                 });
 
-            modelBuilder.Entity("api_alura_challenge.Models.Destino", b =>
+            modelBuilder.Entity("api_jornada_milhas.Models.Destino", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

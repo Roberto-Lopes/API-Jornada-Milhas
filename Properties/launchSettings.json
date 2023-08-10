@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "api_alura_challenge": {
+    "api_jornada_milhas": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

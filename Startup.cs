@@ -1,8 +1,8 @@
-﻿using api_alura_challenge.Data.Contexts;
+﻿using api_jornada_milhas.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
 
-namespace api_alura_challenge;
+namespace api_jornada_milhas;
 
 public class Startup
 {
@@ -15,7 +15,7 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        var connectionString = Configuration.GetConnectionString("ChallengeConnection");
+        var connectionString = Configuration.GetConnectionString("JornadaMilhasConnection");
 
         services.AddDbContext<ApplicationContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 

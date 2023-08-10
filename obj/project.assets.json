@@ -1795,11 +1795,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rober\\Documentos\\Repositorios\\api-alura-challenge\\api-alura-challenge.csproj",
-      "projectName": "api-alura-challenge",
-      "projectPath": "C:\\Users\\rober\\Documentos\\Repositorios\\api-alura-challenge\\api-alura-challenge.csproj",
+      "projectUniqueName": "C:\\Users\\rober\\Documentos\\Repositorios\\api-jornada-milhas\\api-jornada-milhas.csproj",
+      "projectName": "api-jornada-milhas",
+      "projectPath": "C:\\Users\\rober\\Documentos\\Repositorios\\api-jornada-milhas\\api-jornada-milhas.csproj",
       "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rober\\Documentos\\Repositorios\\api-alura-challenge\\obj\\",
+      "outputPath": "C:\\Users\\rober\\Documentos\\Repositorios\\api-jornada-milhas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rober\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace api_alura_challenge.Data.Dtos.DepoimentosDtos;
+namespace api_jornada_milhas.Data.Dtos.DepoimentosDtos;
 
 public class UpdateDepoimentoDto
 {
