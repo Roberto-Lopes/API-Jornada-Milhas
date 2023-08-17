@@ -13,7 +13,7 @@ namespace api_jornada_milhas.Integration
         {
             Service = new OpenAIService(new OpenAiOptions()
             {
-                ApiKey = "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"
+                ApiKey = ""
             });
         }
 
