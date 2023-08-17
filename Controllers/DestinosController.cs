@@ -1,6 +1,7 @@
 ﻿using api_jornada_milhas.Data.Contexts;
 using api_jornada_milhas.Data.Dtos.DestinosDtos;
 using api_jornada_milhas.Data.Dtos.ResultsDtos;
+using api_jornada_milhas.Integration;
 using api_jornada_milhas.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
@@ -28,8 +29,23 @@ public class DestinosController : ControllerBase
     /// <response code="201">Caso o destino seja criado com sucesso</response>
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public IActionResult AdicionaDestino([FromBody] CreateDestinoDto destinoDto)
+    public async Task<IActionResult> AdicionaDestino([FromBody] CreateDestinoDto destinoDto)
     {
+        if(destinoDto.foto_1 == null)
+        {
+            OpenAiChatGPT chat = new OpenAiChatGPT();
+            destinoDto.foto_1 = await chat.GerarImagem(destinoDto.nome);
+        }
+        if (destinoDto.foto_2 == null)
+        {
+            OpenAiChatGPT chat = new OpenAiChatGPT();
+            destinoDto.foto_2 = await chat.GerarImagem(destinoDto.nome);
+        }
+        if (destinoDto.texto_descritivo == null)
+        {
+            OpenAiChatGPT chat = new OpenAiChatGPT();
+            destinoDto.texto_descritivo =  await chat.GerarTextoDescritivo(destinoDto.nome);
+        }
         Destino destino = _mapper.Map<Destino>(destinoDto);
         _context.Add(destino);
         _context.SaveChanges();

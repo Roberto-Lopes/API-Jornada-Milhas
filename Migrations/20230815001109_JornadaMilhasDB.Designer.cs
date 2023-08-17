@@ -10,8 +10,8 @@ using api_jornada_milhas.Data.Contexts;
 namespace api_jornada_milhas.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230810140353_DBJornadaMilhas")]
-    partial class DBJornadaMilhas
+    [Migration("20230815001109_JornadaMilhasDB")]
+    partial class JornadaMilhasDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,7 +69,6 @@ namespace api_jornada_milhas.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("texto_descritivo")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

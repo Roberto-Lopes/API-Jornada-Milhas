@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using api_jornada_milhas.Data.Contexts;
 
-#nullable disable
-
 namespace api_jornada_milhas.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
@@ -66,7 +64,6 @@ namespace api_jornada_milhas.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("texto_descritivo")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");

@@ -1,12 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-#nullable disable
-
 namespace api_jornada_milhas.Migrations
 {
     /// <inheritdoc />
-    public partial class DBJornadaMilhas : Migration
+    public partial class JornadaMilhasDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,7 +45,7 @@ namespace api_jornada_milhas.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     meta = table.Column<string>(type: "varchar(160)", maxLength: 160, nullable: false, defaultValue: "")
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    texto_descritivo = table.Column<string>(type: "longtext", nullable: false)
+                    texto_descritivo = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
